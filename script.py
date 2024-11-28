@@ -1,13 +1,21 @@
 import os 
 from rembg import remove
 from PIL import Image
+from Config import Input, Output
 
-path  = input('Enter images Directory: ')
-new_dir = input('Enter new Directory for the images: ')
+
+teste_path = str(os.path.dirname(__file__) + Input)
+teste_dir = str(os.path.dirname(__file__) + Output)
+
+print("Iniciou")
+path  = teste_path 
+new_dir = teste_dir 
 images = os.listdir(path)
 
-
 for image in images:
-    input = Image.open(path)
+    print(image)
+    input = Image.open(path + "/" + image)
     output = remove(input)
-    output.save(new_dir)
+    output.save(new_dir + "/" + image)
+    
+print("Fim")  
